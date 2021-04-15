@@ -49,13 +49,13 @@ class Ball {
   }
 }
 
-let ball1 = new Ball(1, new Vector(200, 120), new Vector(45, 0));
-let ball2 = new Ball(10, new Vector(200, 200), new Vector(0, 2));
+let ball1 = new Ball(1, new Vector(200, 100), new Vector(200, 0));
+let ball2 = new Ball(100, new Vector(200, 200), new Vector(3, 5));
 
 let balls = [ball1, ball2];
 
 function setup() {
-  createCanvas(400, 400);
+  createCanvas(windowWidth, windowHeight);
   background(20);
   noStroke();
 }
@@ -80,4 +80,26 @@ function draw() {
   }
 
   balls.forEach((ball) => ball.draw());
+}
+
+let startX = 0;
+let startY = 0;
+let startTime = 0;
+
+function mousePressed() {
+  locked = false;
+
+  startX = mouseX;
+  startY = mouseY;
+  startTime = millis()
+}
+
+function mouseReleased() {
+  let velocity = new Vector(startX - mouseX, startY - mouseY).mul(0.3);
+  let position = new Vector(startX, startY);
+  let mass = (millis() - startTime) / 1000;
+
+  let newBall = new Ball(mass, position, velocity);
+
+  balls.push(newBall);
 }
