@@ -1,4 +1,4 @@
-const G = 10000;
+const G = 30000;
 
 class Vector {
   constructor(x, y) {
@@ -49,8 +49,8 @@ class Ball {
   }
 }
 
-let ball1 = new Ball(1, new Vector(200, 100), new Vector(20, 0));
-let ball2 = new Ball(10, new Vector(200, 200), new Vector(0, 0));
+let ball1 = new Ball(1, new Vector(200, 120), new Vector(45, 0));
+let ball2 = new Ball(10, new Vector(200, 200), new Vector(0, 2));
 
 let balls = [ball1, ball2];
 
